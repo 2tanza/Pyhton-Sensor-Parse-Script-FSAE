@@ -19,6 +19,7 @@ class CsvColumnSelector(tk.Tk):
 
         self.title("CSV Column Selector")
         self.geometry("800x1000")
+        self.minsize(600, 1000)
 
         self.df = None
         self.header_vars = []
