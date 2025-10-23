@@ -1,13 +1,24 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 import pandas as pd
+import platform
+
+# dpi fix, solves blurry display on high resolution screens for windows
+if platform.system() == 'Windows':
+    try:
+        import ctypes
+        # Set process to be "System DPI Aware" (value=1)
+        # This tells Windows not to scale the app, making it sharp
+        ctypes.windll.shcore.SetProcessDpiAwareness(1)
+    except Exception as e:
+        print(f"Warning: Could not set DPI awareness. GUI might be blurry. Error: {e}")
 
 class CsvColumnSelector(tk.Tk):
     def __init__(self):
         super().__init__()
 
         self.title("CSV Column Selector")
-        self.geometry("400x500")
+        self.geometry("800x1000")
 
         self.df = None
         self.header_vars = []
